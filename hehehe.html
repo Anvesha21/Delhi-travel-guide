@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Famous Temples in Delhi</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <body>
+    <img src="C:\Users\anves\Downloads\MARKETS TO EXPLORE.jpg" alt="Markets to Explore">
+</body>
+  <style>
+    
+    /* Basic reset and styling */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    h1.title {
+      text-align: center;
+      margin: 30px 0;
+      color: #2c3e50;
+      font-family: 'Georgia', 'Times New Roman', Times, serif;
+      font-size: 2.8em;
+      font-weight: bold;
+      letter-spacing: 1px;
+      background: linear-gradient(90deg, #f30606, #d31c13);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Responsive grid */
+      gap: 20px;
+      padding: 20px;
+      justify-items: center; /* Center cards */
+    }
+
+    .card {
+      width: 100%; /* Make sure cards take full available width */
+      background-color: #fff;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      text-align: center;
+      padding: 15px;
+    }
+
+    .temple-name {
+      font-size: 1.5em;
+      color: #131212;
+      margin-bottom: 10px;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      width: 80%;
+      max-width: 600px;
+      z-index: 1000;
+    }
+
+    .modal h2 {
+      margin-top: 0;
+    }
+
+    .modal p {
+      line-height: 1.5;
+    }
+
+    .close-btn {
+      display: block;
+      margin: 20px auto 0;
+      padding: 10px 20px;
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+
+    /* Carousel Styles */
+    .carousel {
+      position: relative;
+      margin: 30px auto;
+      width: 80%;
+      max-width: 900px;
+      overflow: hidden;
+      border-radius: 10px;
+      border: 2px solid #ddd;
+    }
+
+    .carousel-container {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-card {
+      flex: 0 0 100%;
+      text-align: center;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    .video-title {
+      margin-top: 10px;
+      font-size: 1.1em;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+
+    .carousel-btn.prev {
+      left: 10px;
+    }
+
+    .carousel-btn.next {
+      right: 10px;
+    }
+
+    .carousel-btn:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      .carousel-card iframe {
+        height: 180px;
+      }
+    }
+    /* Styling for FAQ Section */
+  .faq {
+    max-width: 800px;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+  }
+
+  .faq h2 {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 2.2em;
+  }
+
+  .faq-item {
+    margin-bottom: 15px;
+  }
+
+  .faq-question {
+    width: 100%;
+    padding: 15px;
+    text-align: left;
+    background-color: #f15e15;
+    color: white;
+    font-size: 1.2em;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    outline: none;
+  }
+
+  .faq-question:hover {
+    background-color: #450f96,#d49b2f;
+  }
+
+  .faq-answer {
+    display: none;
+    padding: 15px;
+    background-color: #ecf0f1;
+    border-radius: 5px;
+    margin-top: 5px;
+  }
+
+  /* Smooth transition for the answer */
+  .faq-answer p {
+    margin: 0;
+    font-size: 1.1em;
+    color: #333;
+  }
+  </style>
+</head>
+
+<body>
+  <h1 class="title">Famous Temples in Delhi</h1>
+
+  <div class="container">
+    <!-- Card for Akshardham Temple -->
+    <div class="card" onclick="showModal('akshardham')">
+      <img src="https://akshardham.com/newdelhi/wp-content/uploads/2015/06/akshardham_facts_and_figure_banner.jpg" alt="Akshardham Temple">
+      <div class="card-content">
+        <h3 class="temple-name">Akshardham Temple</h3>
+        <div class="temple-details">
+          <p><i class="fas fa-map-marker-alt"></i> NH 24, Pandav Nagar, Delhi</p>
+          <p><i class="fas fa-clock"></i> 9:30 AM - 6:30 PM</p>
+          <p><i class="fas fa-subway"></i> Nearest Metro: Akshardham (Blue Line)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card for Lotus Temple -->
+    <div class="card" onclick="showModal('lotus')">
+      <img src="https://chardhambooking.com/wp-content/uploads/2021/01/Lotus-Tmple-Photo-by-Arpan-Das.jpg" alt="Lotus Temple">
+      <div class="card-content">
+        <h3 class="temple-name">Lotus Temple</h3>
+        <div class="temple-details">
+          <p><i class="fas fa-map-marker-alt"></i> Kalkaji, Delhi</p>
+          <p><i class="fas fa-clock"></i> 9:00 AM - 5:00 PM</p>
+          <p><i class="fas fa-subway"></i> Nearest Metro: Kalkaji Mandir (Violet Line)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card for ISKCON Temple -->
+    <div class="card" onclick="showModal('iskcon')">
+      <img src="https://media.istockphoto.com/id/486884726/photo/iskcon-temple-new-delhi-cngltrv1109.jpg?s=612x612&w=0&k=20&c=Ajrt_VMi_53DlkjjjAjMWv-f8vHRFFGbAzNjtaJcHmI=" alt="ISKCON Temple">
+      <div class="card-content">
+        <h3 class="temple-name">ISKCON Temple</h3>
+        <div class="temple-details">
+          <p><i class="fas fa-map-marker-alt"></i> East of Kailash, Delhi</p>
+          <p><i class="fas fa-clock"></i> 4:30 AM - 9:00 PM</p>
+          <p><i class="fas fa-subway"></i> Nearest Metro: Nehru Place (Violet Line)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card for Hanuman Temple -->
+    <div class="card" onclick="showModal('hanuman')">
+      <img src="https://media.gettyimages.com/id/493080130/photo/temple-dedicated-to-hindu-god-hanuman.jpg?s=612x612&w=gi&k=20&c=7s2GMpkctmBcMq5tYLuGfYv3Imfe2_i1Zsq_-PkuhHY=" alt="Hanuman Temple">
+      <div class="card-content">
+        <h3 class="temple-name">Hanuman Temple</h3>
+        <div class="temple-details">
+          <p><i class="fas fa-map-marker-alt"></i> Connaught Place, Delhi</p>
+          <p><i class="fas fa-clock"></i> 5:00 AM - 11:00 PM</p>
+          <p><i class="fas fa-subway"></i> Nearest Metro: Rajiv Chowk (Blue Line)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card for Kalkaji Mandir -->
+    <div class="card" onclick="showModal('kalkaji')">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAfD6uNZh2t5T_YyHa5wFgDQO1aQ5m74nlMQ&s" alt="Kalkaji Mandir">
+      <div class="card-content">
+        <h3 class="temple-name">Kalkaji Mandir</h3>
+        <div class="temple-details">
+          <p><i class="fas fa-map-marker-alt"></i> Kalkaji, Delhi</p>
+          <p><i class="fas fa-clock"></i> 4:00 AM - 11:30 PM</p>
+          <p><i class="fas fa-subway"></i> Nearest Metro: Kalkaji Mandir (Violet Line)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card for Birla Mandir -->
+    <div class="card" onclick="showModal('birla')">
+      <img src="https://media.istockphoto.com/id/524260397/photo/birla-mandir-is-a-hindu-temple-jaipur-india.jpg?s=612x612&w=0&k=20&c=2m8sy5K8O0RRJ3BGeA6CJiTBfqlyx2Zcq58Edxdr48Q=" alt="Birla Mandir">
+      <div class="card-content">
+        <h3 class="temple-name">Birla Mandir</h3>
+        <div class="temple-details">
+          <p><i class="fas fa-map-marker-alt"></i> Mandir Marg, Delhi</p>
+          <p><i class="fas fa-clock"></i> 8:00 AM - 7:00 PM</p>
+          <p><i class="fas fa-subway"></i> Nearest Metro: Patel Nagar (Blue Line)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card for Jhandewalan Temple -->
+    <div class="card" onclick="showModal('Jhandewalan Temple')">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Jhandewali_Devi_Mandir%2C_Delhi_by_Ashish05.jpg/330px-Jhandewali_Devi_Mandir%2C_Delhi_by_Ashish05.jpg" alt="Jhandewalan Temple">
+      <div class="card-content">
+        <h3 class="temple-name">Jhandewalan Temple</h3>
+        <div class="temple-details">
+          <p><i class="fas fa-map-marker-alt"></i> Doctor BR Ambedkar Marg, Block E 1, Jhandewalan Extension, Delhi</p>
+          <p><i class="fas fa-clock"></i> 7:00 AM - 12:00 PM</p>
+          <p><i class="fas fa-subway"></i> Nearest Metro:Jhandewalan (Blue Line)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card for Chhatarpur Temple -->
+    <div class="card" onclick="showModal('chatarpur')">
+      <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/10/52/4a/53/chhatarpur-temple.jpg?w=1200&h=-1&s=1" alt="chatarpur">
+      <div class="card-content">
+        <h3 class="temple-name">Chhatarpur Temple</h3>
+        <div class="temple-details">
+          <p><i class="fas fa-map-marker-alt"></i> Chhatarpur Temple, Delhi</p>
+          <p><i class="fas fa-clock"></i> 7:00 AM - 5:00 PM</p>
+          <p><i class="fas fa-subway"></i> Nearest Metro: chatarpur metro (Yellow Line)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for Akshardham Temple -->
+  <div id="akshardham" class="modal">
+    <h2>Akshardham Temple</h2>
+    <p>Akshardham Temple is a spiritual-cultural campus in Delhi. It is dedicated to Bhagwan Swaminarayan and depicts the traditional art and cultural heritage of India.</p>
+    <button class="close-btn" onclick="closeModal('akshardham')">Close</button>
+  </div>
+
+  <!-- Modal for Lotus Temple -->
+  <div id="lotus" class="modal">
+    <h2>Lotus Temple</h2>
+    <p>The Lotus Temple, shaped like a lotus flower, is a Bahá'í House of Worship. It is a prominent tourist attraction and is known for its peaceful ambiance.</p>
+    <button class="close-btn" onclick="closeModal('lotus')">Close</button>
+  </div>
+
+  <!-- Modal for ISKCON Temple -->
+  <div id="iskcon" class="modal">
+    <h2>ISKCON Temple</h2>
+    <p>The ISKCON Temple is a beautiful temple dedicated to Lord Krishna and is known for its vibrant community, spiritual teachings, and cultural events.</p>
+    <button class="close-btn" onclick="closeModal('iskcon')">Close</button>
+  </div>
+
+  <!-- Modal for Hanuman Temple -->
+  <div id="hanuman" class="modal">
+    <h2>Hanuman Temple</h2>
+    <p>The Hanuman Temple in Connaught Place is dedicated to Lord Hanuman, and is one of the oldest and most revered temples in Delhi.</p>
+    <button class="close-btn" onclick="closeModal('hanuman')">Close</button>
+  </div>
+
+  <!-- Modal for Kalkaji Mandir -->
+  <div id="kalkaji" class="modal">
+    <h2>Kalkaji Mandir</h2>
+    <p>Kalkaji Mandir is dedicated to Goddess Kali. It is a major temple located in South Delhi, known for its spiritual significance and vibrant rituals.</p>
+    <button class="close-btn" onclick="closeModal('kalkaji')">Close</button>
+  </div>
+
+  <!-- Modal for Birla Mandir -->
+  <div id="birla" class="modal">
+    <h2>Birla Mandir</h2>
+    <p>Birla Mandir is a beautiful Hindu temple dedicated to Lord Vishnu and Goddess Lakshmi, located in Delhi. The temple is known for its architectural beauty.</p>
+    <button class="close-btn" onclick="closeModal('birla')">Close</button>
+  </div>
+
+  <!-- Modal for Jhandewalan TEMPLE -->
+  <div id="jama" class="modal">
+    <h2>Jhandewalan</h2>
+    <p>Jhandewalan Temple is a Hindu temple near Karol Bagh in Delhi, India dedicated to the goddess Vaishno Devi.[1] It is among the oldest temple in Delhi and located on Jhandewala road</p>
+    <button class="close-btn" onclick="closeModal('Jhandewalan')">Close</button>
+  </div>
+
+  <!-- Modal for Chhatarpur Temple -->
+  <div id="qutub" class="modal">
+    <h2>Chhatarpur Temple</h2>
+    <p>Chhatarpur Temple is a Hindu temple dedicated to the goddess Katyayani. The entire complex of the temple is spread over a wide area of 28 hectares. It is located in Chhatarpur, on the southwestern outskirts of the New Delhi. It is the 2nd largest temple in Delhi, after the Akshardham Temple</p>
+    <button class="close-btn" onclick="closeModal('qutub')">Close</button>
+  </div>
+
+  <!-- Overlay -->
+  <div class="overlay" onclick="closeModal()"></div>
+
+  <!-- Carousel -->
+  <div class="carousel">
+    <div class="carousel-container">
+      <div class="carousel-card">
+        <iframe width="100%" height="400" src="https://www.youtube.com/embed/P6ALf0EMMPo?si=sb0WmE860nJeHEa_" title="YouTube Video"></iframe>
+        <p class="video-title">HISTORICAL TEMPLES</p>
+      </div>
+      <div class="carousel-card">
+        <iframe width="100%" height="400" src="https://www.youtube.com/embed/56RwBf2XZLU?si=EC4xGrOn7jYVpn0w" title="YouTube Video"></iframe>
+        <p class="video-title">FAMOUS TEMPLES</p>
+      </div>
+      <div class="carousel-card">
+        <iframe width="100%" height="400" src="https://www.youtube.com/embed/ejHCh2ZFyAA?si=mGjXmkj2lEmNiyF1" title="YouTube Video"></iframe>
+        <p class="video-title">5 MOST FAMOUS TEMPLES</p>
+      </div>
+    </div>
+    <button class="carousel-btn prev" onclick="slideCarousel(-1)">❮</button>
+    <button class="carousel-btn next" onclick="slideCarousel(1)">❯</button>
+  </div>
+  <div class="faq">
+    <h2> FAQ</h2>
+  
+    <div class="faq-item">
+      <button class="faq-question">1. What is the history behind Akshardham Temple?</button>
+      <div class="faq-answer">
+        <p>Akshardham Temple, also known as the Akshardham Swaminarayan Temple, is a spiritual-cultural campus dedicated to Bhagwan Swaminarayan. It is famous for its grandeur, the central monument, and the exhibitions depicting the rich heritage of India.</p>
+      </div>
+    </div>
+  
+    <div class="faq-item">
+      <button class="faq-question">2. What makes the Lotus Temple unique?</button>
+      <div class="faq-answer">
+        <p>The Lotus Temple is renowned for its unique lotus flower-shaped design. It serves as a Bahá'í House of Worship and is open to people of all faiths. Its peaceful environment and stunning architecture make it a prominent landmark in Delhi.</p>
+      </div>
+    </div>
+  
+    <div class="faq-item">
+      <button class="faq-question">3. When was the ISKCON Temple in Delhi established?</button>
+      <div class="faq-answer">
+        <p>The ISKCON Temple in Delhi was established in 1998. It is a major center of Lord Krishna worship and cultural activities. The temple is known for its vibrant atmosphere, prayers, and spiritual programs.</p>
+      </div>
+    </div>
+  
+    <div class="faq-item">
+      <button class="faq-question">4. What is the significance of the Hanuman Temple in Connaught Place?</button>
+      <div class="faq-answer">
+        <p>The Hanuman Temple in Connaught Place is one of the oldest and most revered temples in Delhi. It is famous for the large idol of Lord Hanuman and its historical significance in the city’s religious landscape.</p>
+      </div>
+    </div>
+  
+    <div class="faq-item">
+      <button class="faq-question">5. What should I know before visiting Kalkaji Mandir?</button>
+      <div class="faq-answer">
+        <p>Kalkaji Mandir, dedicated to Goddess Kali, is one of the major temples in South Delhi. Visitors should respect the religious rituals and be aware that it can get crowded during festivals. It opens early in the morning and closes late in the evening.</p>
+      </div>
+    </div>
+  
+    <div class="faq-item">
+      <button class="faq-question">6. Why is Birla Mandir so popular among tourists?</button>
+      <div class="faq-answer">
+        <p>Birla Mandir is popular due to its magnificent architectural design and dedication to Lord Vishnu and Goddess Lakshmi. The temple is famous for its serenity and beautiful surroundings, making it a must-visit for those interested in spirituality and architecture.</p>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Carousel slide function
+    let currentSlide = 0;
+
+    function slideCarousel(direction) {
+      const container = document.querySelector('.carousel-container');
+      const slides = document.querySelectorAll('.carousel-card');
+      const totalSlides = slides.length;
+
+      currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+      container.style.transform = translateX(-${currentSlide * 100}%);
+    }
+
+    // Modal show/hide function
+    function showModal(temple) {
+      document.getElementById(temple).style.display = 'block';
+      document.querySelector('.overlay').style.display = 'block';
+    }
+
+    function closeModal(temple) {
+      if (temple) {
+        document.getElementById(temple).style.display = 'none';
+      }
+      document.querySelector('.overlay').style.display = 'none';
+    }
+     // JavaScript to toggle the FAQ answer visibility
+  const faqQuestions = document.querySelectorAll('.faq-question');
+  
+  faqQuestions.forEach(question => {
+    question.addEventListener('click', () => {
+      const answer = question.nextElementSibling;
+      const isVisible = answer.style.display === 'block';
+      // Close all answers first
+      document.querySelectorAll('.faq-answer').forEach(answer => {
+        answer.style.display = 'none';
+      });
+      // If the answer is not already visible, open it
+      if (!isVisible) {
+        answer.style.display = 'block';
+      }
+    });
+  });
+  </script>
+</body>
+
+</html>
