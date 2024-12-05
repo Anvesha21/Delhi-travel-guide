@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Famous Museums in Delhi</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <body>
+    <img src="C:\Users\anves\OneDrive\Pictures\MARKETS TO EXPLORE.jpg" alt="Markets to Explore">
+</body>
+  <style>
+
+    /* General Styling */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f5f2f2;
+    }
+
+    h1.title {
+      text-align: center;
+      margin: 20px 0;
+      color: #2c3e50;
+      font-size: 2.5em;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .card {
+      background: #f7f6f6;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 15px;
+      text-align: center;
+    }
+
+    .museum-name {
+      font-size: 1.2em;
+      color: #333;
+    }
+    /* Modal styles */
+     .modal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      width: 80%;
+      max-width: 600px;
+      z-index: 1000;
+    }
+
+    .modal h2 {
+      margin-top: 0;
+    }
+
+    .close-btn {
+      display: block;
+      margin: 20px auto 0;
+      padding: 10px 20px;
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+
+
+    /* Carousel Styling */
+    .carousel {
+      margin: 20px auto;
+      position: relative;
+      width: 80%;
+      max-width: 900px;
+      overflow: hidden;
+    }
+
+    .carousel-container {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-card {
+      flex: 0 0 100%;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: #aef30f;
+      border: none;
+      border-radius: 50%;
+      padding: 10px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    .carousel-btn.prev {
+      left: 10px;
+    }
+
+    .carousel-btn.next {
+      right: 10px;
+    }
+
+    .video-title {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 1.1em;
+      color: #2c3e50;
+    }
+
+    /* FAQ Section */
+    .faq-container {
+  margin: 20px auto;
+  padding: 10px;
+  max-width: 800px;
+  font-family: Arial, sans-serif;
+}
+
+.faq-container details {
+  margin-bottom: 10px;
+  border: 1px solid #4e09e3;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #f0f1f2;
+  cursor: pointer;
+}
+
+.faq-container summary {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.faq-container p {
+  margin-top: 10px;
+  color: #555;
+}
+
+h1.faq-title {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  font-size: 2em;
+}
+
+  </style>
+</head>
+<body>
+  <h1 class="title">Famous Museums in Delhi</h1>
+    <!-- Card Section -->
+    <!-- Add your cards here (already included in the original HTML) -->
+    <div class="container">
+        <!-- Card 1: National Museum -->
+        <div class="card" onclick="showModal('nationalMuseum')">
+          <img src="https://delhitourism.travel/images/places-to-visit/headers/national-museum-of-india-delhi-tourism-entry-fee-timings-holidays-reviews-header.jpg" alt="National Museum">
+          <div class="card-content">
+            <h3 class="museum-name">National Museum</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Janpath, Delhi</p>
+            <p><i class="fas fa-clock"></i> 10:00 AM - 6:00 PM</p>
+            <p><i class="fas fa-ticket-alt"></i> ₹20 (Indians), ₹650 (Foreigners)</p>
+          </div>
+        </div>
+    
+        <!-- Card 2: National Rail Museum -->
+        <div class="card" onclick="showModal('National Rail Museum')">
+          <img src="https://www.nrmindia.org/assets/img/about.webp" alt="National Rail Museum">
+          <div class="card-content">
+            <h3 class="museum-name">National Rail Museum</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Chanakyapuri, Delhi</p>
+            <p><i class="fas fa-clock"></i> 10:00 AM - 5:00 PM</p>
+            <p><i class="fas fa-ticket-alt"></i> ₹50 (Adults), ₹10 (Children)</p>
+          </div>
+        </div>
+    
+        <!-- Card 3: Gandhi Smriti Museum -->
+        <div class="card" onclick="showModal('Gandhi Smriti Museum')">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOGW47_WhsvDO2nwqtW-JFvOa-S1lbY_Vp8g&s" alt="Gandhi Smriti Museum">
+          <div class="card-content">
+            <h3 class="museum-name">Gandhi Smriti Museum</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Tees January Marg, Delhi</p>
+            <p><i class="fas fa-clock"></i> 9:30 AM - 5:30 PM</p>
+            <p><i class="fas fa-ticket-alt"></i> Free Entry</p>
+          </div>
+        </div>
+    
+        <!-- Card 4: National Handicrafts Museum -->
+        <div class="card" onclick="showModal('National Handicrafts Museum')">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSjBCuDtaCAWM4nuP1eOSKuBQfH-ZlKCN73w&s" alt="National Handicrafts Museum">
+          <div class="card-content">
+            <h3 class="museum-name">National Handicrafts Museum</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Pragati Maidan, Delhi</p>
+            <p><i class="fas fa-clock"></i> 10:00 AM - 5:00 PM</p>
+            <p><i class="fas fa-ticket-alt"></i> ₹20 (Indians), ₹200 (Foreigners)</p>
+          </div>
+        </div>
+    
+        <!-- Card 5: Shankar's International Doll Museum -->
+        <div class="card" onclick="showModal('Shankars International Doll Museum')">
+          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhikX5dtqjxNKKdqiX1Cka9Dh34uCDZVIUbKul36dzDgMd5U5X5TbJOUSrDoELWkCUhdcIxzuFtovaMZPTLIfyEu2xpw1pbq40vqDH36hGLfzTHEH3TzR10U9vXft6-3mYWwXw-p3C9NyFN/s1600/Doll+Museum+Delhi+Pixelated+Memories+Sahil+Ahuja+%25285%2529.JPG" alt="Doll Museum">
+          <div class="card-content">
+            <h3 class="museum-name">Shankar's International Doll Museum</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Bahadur Shah Zafar Marg, Delhi</p>
+            <p><i class="fas fa-clock"></i> 10:00 AM - 6:00 PM</p>
+            <p><i class="fas fa-ticket-alt"></i> ₹15 (Adults), ₹5 (Children)</p>
+          </div>
+        </div>
+    
+        <!-- Card 6: Nehru Planetarium -->
+        <div class="card" onclick="showModal('Nehru Planetarium')">
+          <img src="https://www.seawatersports.com/images/places/nehru-planetarium.png" alt="Nehru Planetarium">
+          <div class="card-content">
+            <h3 class="museum-name">Nehru Planetarium</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Teen Murti Marg, Delhi</p>
+            <p><i class="fas fa-clock"></i> 11:30 AM - 5:00 PM</p>
+            <p><i class="fas fa-ticket-alt"></i> ₹60 (Adults), ₹30 (Children)</p>
+          </div>
+        </div>
+    
+        <!-- Card 7: Sulabh International Museum -->
+        <div class="card" onclick="showModal('Sulabh International Museum')">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKy16dj2VUNyo6dUMH6PY6TwqpUkdxp5eRTA&s" alt="Sulabh International Museum">
+          <div class="card-content">
+            <h3 class="museum-name">Sulabh International Museum of Toilets</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Palam Dabri Marg, Delhi</p>
+            <p><i class="fas fa-clock"></i> 10:00 AM - 5:00 PM</p>
+            <p><i class="fas fa-ticket-alt"></i> Free Entry</p>
+          </div>
+        </div>
+    
+        <!-- Card 8: Indira Gandhi Memorial Museum -->
+        <div class="card" onclick="showModal(' Indira Gandhi Memorial Museum')">
+          <img src="https://paramountclientweb.s3.ap-south-1.amazonaws.com/indian-holiday-trip/Place/2023/Mar/Img_9650_202354311305_Indira_Gandhi_Memorial_Museum.jpg" alt="Indira Gandhi Memorial Museum">
+          <div class="card-content">
+            <h3 class="museum-name">Indira Gandhi Memorial Museum</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Safdarjung Road, Delhi</p>
+            <p><i class="fas fa-clock"></i> 9:30 AM - 5:00 PM</p>
+            <p><i class="fas fa-ticket-alt"></i> Free Entry</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal for National Museum -->
+      <div id="nationalMuseum" class="modal">
+        <h2>National Museum</h2>
+        <p>The National Museum in Delhi showcases a vast collection of art and artifacts from Indian history, including sculptures, paintings, manuscripts, and textiles.</p>
+        <button class="close-btn" onclick="closeModal('nationalMuseum')">Close</button>
+      </div>
+  
+      <!-- Modal for National Gallery of Modern Art -->
+        <div id="National Gallery of Modern Art" class="modal">
+          <h2>National Gallery of Modern Art (NGMA)</h2>
+          <p>The NGMA houses modern and contemporary Indian art and includes works by renowned artists, exhibitions, and cultural programs.</p>
+          <button class="close-btn" onclick="closeModal('National Gallery of Modern Art')">Close</button>
+        </div>
+  
+        <!-- Modal for Rail Museum -->
+        <div id="National Rail Museum" class="modal">
+          <h2>National Rail Museum</h2>
+          <p>The National Rail Museum in Delhi offers a fascinating journey through the history of Indian Railways, featuring vintage locomotives, models, and exhibits.</p>
+          <button class="close-btn" onclick="closeModal('National Rail Museum')">Close</button>
+        </div>
+  
+        <!-- Modal for Gandhi Smriti -->
+        <div id="Gandhi Smriti" class="modal">
+           <h2>Gandhi Smriti</h2>
+           <p>Gandhi Smriti is a museum dedicated to Mahatma Gandhi, featuring his life, teachings, and the spot where he was assassinated.</p>
+           <button class="close-btn" onclick="closeModal('Gandhi Smriti')">Close</button>
+        </div>
+  
+       <!-- Modal for Crafts Museum -->
+        <div id="National Crafts Museum" class="modal">
+           <h2>National Crafts Museum</h2>
+           <p>The Crafts Museum displays India's rich tradition of handicrafts, with live craft demonstrations, textiles, and folk art.</p>
+           <button class="close-btn" onclick="closeModal('National Crafts Museum')">Close</button>
+        </div>
+  
+        <!-- Modal for Indira Gandhi Memorial Museum -->
+          <div id="Indira Gandhi Memorial Museum" class="modal">
+             <h2>Indira Gandhi Memorial Museum</h2>
+             <p>The museum is dedicated to Indira Gandhi, showcasing her personal belongings, photographs, and the events of her life and legacy.</p>
+             <button class="close-btn" onclick="closeModal('Indira Gandhi Memorial Museum')">Close</button>
+          </div>
+  
+        <!-- Modal for Air Force Museum -->
+        <div id="Indian Air Force Museum" class="modal">
+          <h2>Indian Air Force Museum</h2>
+          <p>The Indian Air Force Museum highlights the history and achievements of the Indian Air Force, featuring aircraft, uniforms, and memorabilia.</p>
+          <button class="close-btn" onclick="closeModal('Indian Air Force Museum')">Close</button>
+         </div>
+  
+       <!-- Modal for Shankar's International Dolls Museum -->
+        <div id="Shankar's International Dolls Museum" class="modal">
+          <h2>Shankar's International Dolls Museum</h2>
+          <p>The Dolls Museum features an extensive collection of dolls from around the world, showcasing cultural diversity and craftsmanship.</p>
+          <button class="close-btn" onclick="closeModal('Shankars International Dolls Museum')">Close</button>
+        </div>
+  
+  <!-- Overlay -->
+  <div class="overlay" onclick="closeModal()"></div>
+  
+  <!-- Carousel Section -->
+  <div class="carousel">
+    <div class="carousel-container">
+      <div class="carousel-card">
+        <iframe width="100%" height="400" src="https://www.youtube.com/embed/uWjpyZ-6qxQ" title="National Museum Tour"></iframe>
+        <p class="video-title">National Museum Tour</p>
+      </div>
+      <div class="carousel-card">
+        <iframe width="100%" height="400" src="https://www.youtube.com/embed/D5DOZtgE2ho" title="Rail Museum Highlights"></iframe>
+        <p class="video-title">Rail Museum Highlights</p>
+      </div>
+    </div>
+    <button class="carousel-btn prev" onclick="slideCarousel(-1)">❮</button>
+    <button class="carousel-btn next" onclick="slideCarousel(1)">❯</button>
+  </div>
+
+  <!-- FAQ Section -->
+  <h1 class="faq-title">FAQs</h1>
+  <div class="faq-container">
+    <details>
+      <summary>What are the visiting hours for the National Museum?</summary>
+      <p>The National Museum is open from 10:00 AM to 6:00 PM every day except on public holidays.</p>
+    </details>
+    <details>
+      <summary>Is there free entry to any museums?</summary>
+      <p>Yes, the Gandhi Smriti Museum and Sulabh International Museum of Toilets offer free entry to visitors.</p>
+    </details>
+    <details>
+      <summary>Are there any museums suitable for children?</summary>
+      <p>The Shankar's International Doll Museum and Nehru Planetarium are great for children, offering engaging and interactive exhibits.</p>
+    </details>
+    <details>
+      <summary>Do museums in Delhi offer guided tours?</summary>
+      <p>Many museums, like the National Museum and Rail Museum, provide guided tours at an additional cost.</p>
+    </details>
+    <details>
+      <summary>What are the ticket prices for foreign tourists?</summary>
+      <p>The National Museum charges ₹650 for foreign tourists, while the Handicrafts Museum charges ₹200.</p>
+    </details>
+    <details>
+      <summary>Are there food facilities near the museums?</summary>
+      <p>Most museums in Delhi have nearby food stalls or cafes, and some, like the Rail Museum, have in-house cafeterias.</p>
+    </details>
+  </div>
+
+  <script>
+    // Carousel Script
+    let currentSlide = 0;
+    function slideCarousel(direction) {
+      const container = document.querySelector('.carousel-container');
+      const cards = document.querySelectorAll('.carousel-card');
+      currentSlide = (currentSlide + direction + cards.length) % cards.length;
+      container.style.transform =`translateX(-${currentSlide * 100}%)`;
+    }
+
+  // Modal show/hide function
+  
+    function showModal(modalId) {
+      document.getElementById(modalId).style.display = 'block';
+      document.querySelector('.overlay').style.display = 'block';
+    }
+
+    function closeModal(modalId) {
+      if (modalId) document.getElementById(modalId).style.display = 'none';
+      document.querySelector('.overlay').style.display = 'none';
+    }
+
+     // JavaScript to toggle the FAQ answer visibility
+
+  const faqQuestions = document.querySelectorAll('.faq-question');
+  
+  faqQuestions.forEach(question => {
+    question.addEventListener('click', () => {
+      const answer = question.nextElementSibling;
+      const isVisible = answer.style.display === 'block';
+
+      // Close all answers first
+
+      document.querySelectorAll('.faq-answer').forEach(answer => {
+        answer.style.display = 'none';
+      });
+
+      // If the answer is not already visible, open it
+
+      if (!isVisible) {
+        answer.style.display = 'block';
+      }
+    });
+  });
+  </script>
+</body>
+
+</html>
